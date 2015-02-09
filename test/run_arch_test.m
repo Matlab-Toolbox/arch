@@ -4,12 +4,9 @@
   %% Clear import list to test correct library
   clear import; 
 
-  %% For Packages
-  %    Add package to path (+function folder must be on path)
-  addpath('../package/');
+  %% Load Package
+  run('../load_package');
 
-  %    Import functions 
-  import arch.* 
 
   %% The tests
   error_count = 0;
@@ -32,4 +29,11 @@
     error_count = error_count + 1;
   else
     pass_count  = pass_count  + 1;
+  end
+
+  %% Test Status Report
+  if error_count > 0
+    disp(['Test FAILED : ', num2str(pass_count), ' passes and ',num2str(error_count),' fails'])
+  else
+    disp(['Test Passed : ', num2str(pass_count), ' checks ran '])
   end
